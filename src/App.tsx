@@ -121,7 +121,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#e5e5e5] font-serif selection:bg-white/20 flex flex-col items-center justify-center p-6 md:p-12">
+    <div className="min-h-screen bg-[#050505] text-[#e5e5e5] font-serif selection:bg-white/20 flex flex-col items-center justify-center p-4 sm:p-6 md:p-12">
       
       {/* Background Atmosphere */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
@@ -139,7 +139,7 @@ export default function App() {
               animate={{ opacity: 1, filter: 'blur(0px)' }}
               exit={{ opacity: 0, filter: 'blur(10px)' }}
               transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col items-center justify-center min-h-[60vh] space-y-20"
+              className="flex flex-col items-center justify-center min-h-[60vh] space-y-12 sm:space-y-16 md:space-y-20"
             >
               <div className="space-y-8 text-center">
                 <h1 className="text-4xl md:text-5xl font-light tracking-[0.3em] text-white/90 ml-[0.3em]">
@@ -176,7 +176,7 @@ export default function App() {
                 {String(currentQuestionIndex + 1).padStart(2, '0')} <span className="mx-2 opacity-50">/</span> {questions.length}
               </div>
               
-              <div className="w-full space-y-6">
+              <div className="w-full space-y-4 sm:space-y-6">
                 {questions[currentQuestionIndex].options.map((option, idx) => {
                   const isSelected = selectedAnswer === option.value;
                   const isNotSelected = selectedAnswer && selectedAnswer !== option.value;
@@ -186,12 +186,12 @@ export default function App() {
                       key={idx}
                       onClick={() => handleAnswer(option.value)}
                       disabled={!!selectedAnswer}
-                      className={`w-full text-left p-8 md:p-10 border rounded-2xl transition-all duration-700 group relative overflow-hidden
+                      className={`w-full text-left p-4 sm:p-6 md:p-10 border rounded-xl sm:rounded-2xl transition-all duration-700 group relative overflow-hidden
                         ${isSelected ? 'border-white/50 bg-white/10 scale-[1.02] shadow-[0_0_40px_rgba(255,255,255,0.05)]' : 'border-white/10 hover:bg-white/5 hover:border-white/30'}
                         ${isNotSelected ? 'opacity-20 blur-[4px] scale-[0.98]' : 'opacity-100'}
                       `}
                     >
-                      <span className={`relative z-10 text-xl md:text-2xl leading-relaxed transition-colors duration-700
+                      <span className={`relative z-10 text-base sm:text-xl md:text-2xl leading-relaxed sm:leading-relaxed break-words transition-colors duration-700
                         ${isSelected ? 'text-white' : 'text-white/70 group-hover:text-white'}
                       `}>
                         {option.label}
@@ -220,7 +220,7 @@ export default function App() {
               
               <div className="w-px h-16 bg-gradient-to-b from-white/30 to-transparent mx-auto"></div>
 
-              <div className="space-y-8 text-lg md:text-xl leading-[2.2] text-white/70 tracking-wide px-4 md:px-8">
+              <div className="space-y-6 text-base sm:text-lg md:text-xl leading-[1.95] sm:leading-[2.1] md:leading-[2.2] text-white/70 tracking-wide px-1 sm:px-4 md:px-8">
                 {getResult().content.split('\n\n').map((paragraph, idx) => (
                   <p key={idx} className="text-justify">{paragraph}</p>
                 ))}
