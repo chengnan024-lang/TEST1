@@ -172,11 +172,11 @@ export default function App() {
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="min-h-[60vh] flex flex-col justify-center items-center w-full"
             >
-              <div className="mb-20 text-white/30 text-xs tracking-[0.4em] font-sans">
+              <div className="mb-14 sm:mb-20 text-white/40 text-sm tracking-[0.35em] font-sans">
                 {String(currentQuestionIndex + 1).padStart(2, '0')} <span className="mx-2 opacity-50">/</span> {questions.length}
               </div>
               
-              <div className="w-full space-y-4 sm:space-y-6">
+              <div className="w-full space-y-5 sm:space-y-6">
                 {questions[currentQuestionIndex].options.map((option, idx) => {
                   const isSelected = selectedAnswer === option.value;
                   const isNotSelected = selectedAnswer && selectedAnswer !== option.value;
@@ -186,12 +186,12 @@ export default function App() {
                       key={idx}
                       onClick={() => handleAnswer(option.value)}
                       disabled={!!selectedAnswer}
-                      className={`w-full text-left p-4 sm:p-6 md:p-10 border rounded-xl sm:rounded-2xl transition-all duration-700 group relative overflow-hidden
+                      className={`w-full text-left p-6 sm:p-7 md:p-10 border rounded-2xl transition-all duration-700 group relative overflow-hidden min-h-[104px] sm:min-h-[112px]
                         ${isSelected ? 'border-white/50 bg-white/10 scale-[1.02] shadow-[0_0_40px_rgba(255,255,255,0.05)]' : 'border-white/10 hover:bg-white/5 hover:border-white/30'}
                         ${isNotSelected ? 'opacity-20 blur-[4px] scale-[0.98]' : 'opacity-100'}
                       `}
                     >
-                      <span className={`relative z-10 text-base sm:text-xl md:text-2xl leading-relaxed sm:leading-relaxed break-words transition-colors duration-700
+                      <span className={`relative z-10 text-lg sm:text-xl md:text-2xl leading-8 sm:leading-relaxed break-words transition-colors duration-700 font-medium
                         ${isSelected ? 'text-white' : 'text-white/70 group-hover:text-white'}
                       `}>
                         {option.label}
